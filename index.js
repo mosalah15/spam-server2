@@ -1,4 +1,4 @@
-﻿var ServerID = "515067466570006528"; //اي دي السيرفر
+var ServerID = "515067466570006528"; //اي دي السيرفر
 var ChannelID = "515067564376981506";// اي دي الروم
 
 
@@ -29,5 +29,12 @@ function timerFunc() {
 }
 
 var timer = setTimeout(timerFunc, 1000);
+ client.on("message", function(message) {
+    var args = message.content.split(/ +/g);
+    var command = args.shift()
 
+    if(command == "1say") {
+        message.channel.send(args.slice(1, args.length).join(" "))
+    }
+});
 client.login(process.env.BOT_TOKEN);
